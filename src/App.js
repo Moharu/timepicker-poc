@@ -1,8 +1,12 @@
 import React, { Component, useState } from 'react';
 import DatePicker from 'react-datepicker';
-import TimePicker from 'react-time-picker';
+import TimePickerr from 'react-time-picker';
 import DateTimePicker from 'react-datetime-picker';
+import Picker from 'react-mobile-picker';
+import { TimePicker } from 'antd';
+import moment from 'moment';
 import "react-datepicker/dist/react-datepicker.css";
+import 'antd/dist/antd.css'
 
 
 const PickerOne = () => {
@@ -23,7 +27,7 @@ const PickerOne = () => {
 const PickerTwo = () => {
   const [startDate, setStartDate] = useState(new Date());
   return (
-    <TimePicker
+    <TimePickerr
       onChange={setStartDate}
       value={startDate}
       format={"h:m a"}
@@ -40,6 +44,26 @@ const PickerThree = () => {
       value={startDate}
     />
   )
+}
+
+function generateNumberArray(begin, end) {
+  let array = [];
+  for (let i = begin; i <= end; i++) {
+    array.push((i < 10 ? '0' : '') + i);
+  }
+  return array;
+}
+
+const PickerFour = () => {
+  const [startDate, setStartDate] = useState(moment());
+  return (
+    <TimePicker
+      onChange={setStartDate}
+      value={startDate}
+      format={'h:m a'}
+    />
+  );
+
 }
 
 class App extends Component {
@@ -67,6 +91,9 @@ class App extends Component {
           <p style={{ paddingLeft: '15px'}}>
             <PickerThree />
           </p>
+        </p>
+        <p>
+          <PickerFour /> 
         </p>
       </div>
     );
