@@ -5,12 +5,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import 'antd/dist/antd.css'
 
 const Picker = () => {
-  const [startDate, setStartDate] = useState(moment().startOf('day'));
+  const [startDate, setStartDate] = useState(moment());
   return (
     <TimePicker
       onChange={setStartDate}
       value={startDate}
-      format={'h:mm a'}
+      format={'h:mm A'}
       inputReadOnly
     />
   );
@@ -30,6 +30,11 @@ class App extends Component {
           <style> {`
             .ant-picker-time-panel-column {
               overflow-y: scroll;
+              padding: 0;
+            }
+
+            .ant-picker-time-panel-column:last-child {
+              overflow-y: hidden;
             }
           `}
           </style>
